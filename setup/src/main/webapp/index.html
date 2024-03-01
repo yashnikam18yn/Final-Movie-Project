@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Movie Review App</title>
+    <!-- BS 5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Custom JS -->
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <!-- Custom JS -->
+
+</head>
+
+<body>
+
+
+    <!-- java -jar h2-2.2.224.jar -->
+    <div class="container">
+        <ul class="nav nav-tabs mt-2 mb-3" id="myTab" role="tablist">
+            <a href="#" class="navbar-brand">
+                <img src="https://clipartcraft.com/images/imdb-logo-svg-4.png" alt="IMDb Logo" class="img-fluid">
+            </a>
+
+            <li class="nav-item" role="presentation">
+                <button onClick="allMovies()" class="nav-link" id="feed-tab" data-bs-toggle="tab"
+                    data-bs-target="#feed-tab-pane" type="button" role="tab" aria-controls="feed-tab-pane"
+                    aria-selected="false" disabled>Home</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button onclick="viewAllReview()" class="nav-link" id="profile-tab" data-bs-toggle="tab"
+                    data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane"
+                    aria-selected="false" disabled>All
+                    Reviews</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button onclick="viewMyReviews()" class="nav-link" id="my-movies-tab" data-bs-toggle="tab"
+                    data-bs-target="#my-tweets-tab-pane" type="button" role="tab" aria-controls="my-tweets-tab-pane"
+                    aria-selected="false" disabled>My Reviews</button>
+            </li>
+            <li class="nav-item ms-auto" role="presentation">
+                <button class="nav-link active" id="sign-in-tab" data-bs-toggle="tab" data-bs-target="#sign-in-tab-pane"
+                    type="button" role="tab" aria-controls="sign-in-tab-pane" aria-selected="true">Sign In</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="sign-up-tab" data-bs-toggle="tab" data-bs-target="#sign-up-tab-pane"
+                    type="button" role="tab" aria-controls="sign-up-tab-pane" aria-selected="false">Sign
+                    Up</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="btn btn-outline-primary" id="logout-tab" type="button" role="tab" aria-controls="logout-tab-pane" aria-selected="false" hidden onclick="logout()">
+                    Logout
+                </button>
+            </li>
+            
+        </ul>
+
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade" id="feed-tab-pane" role="tabpanel" aria-labelledby="feed-tab" tabindex="0">
+
+                <!-- Home -->
+                <!-- movie List -->
+                <!-- <div id="modalbox"> -->
+
+                <!-- </div> -->
+                <ul id="movieList" class="list-group">
+
+                </ul>
+
+
+
+
+
+            </div>
+            <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+
+                <!-- All Reviews  -->
+
+
+                <!-- This is card -->
+                <ul id="reviewList">
+
+                </ul>
+                <!-- card end -->
+                <!-- Profile END -->
+
+
+
+            </div>
+            <div class="tab-pane fade" id="my-tweets-tab-pane" role="tabpanel" aria-labelledby="my-tweets-tab"
+                tabindex="0">
+
+
+                <!-- My Reviews -->
+
+
+                <!-- <ul id="mytweet" class="list-group">
+				
+                </ul> -->
+
+                <ul id="myreviewList" class="list-group">
+
+                </ul>
+
+            </div>
+            <div class="tab-pane fade show active" id="sign-in-tab-pane" role="tabpanel" aria-labelledby="sign-in-tab"
+                tabindex="0">
+
+
+                <!-- Login Start -->
+
+
+                <div class="container mt-5">
+                    <div class="row">
+                        <div class="col-md-6 offset-md-3">
+                            <!-- Content of the login form -->
+                            <div class="card shadow">
+                                <div class="card-body">
+                                    <h3 class="card-title text-center mb-4">Login</h3>
+
+                                    <div class="mb-3">
+                                        <label for="useremaillogin" class="form-label">Email address</label>
+                                        <input type="email" class="form-control" id="useremaillogin"
+                                            aria-describedby="emailHelp">
+                                        <div id="emailHelp" class="form-text">We'll never share your email with anyone
+                                            else.</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="userpasswordlogin" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="userpasswordlogin">
+                                    </div>
+                                    <div class="mb-3 form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                                    </div>
+                                    <button type="submit" onclick="signIn()"
+                                        class="btn btn-primary btn-block">Login</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <!-- Login End -->
+
+
+
+            </div>
+            <div class="tab-pane fade" id="sign-up-tab-pane" role="tabpanel" aria-labelledby="sign-up-tab" tabindex="0">
+
+                <!-- Sign Up Start -->
+
+
+                <div class="container mt-5">
+                    <h3 class="text-center">Sign Up</h3>
+                   
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            <div class="card shadow">
+                                <div class="card-body">
+                                    <form>
+                                        <div class="mb-3">
+                                            <label for="username" class="form-label">UserName</label>
+                                            <input type="text" class="form-control" id="username" placeholder="Enter Name Here">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="useremail" class="form-label">Email address</label>
+                                            <input type="email" class="form-control" id="useremail" placeholder="name@example.com">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="userpassword" class="form-label">Enter Password</label>
+                                            <input type="password" class="form-control" id="userpassword" placeholder="">
+                                        </div>
+                                        <div class="mb-3">
+                                            <button onclick="signUp()" type="button" id="btnsignup" class="btn btn-primary btn-block">Sign Up</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+
+                <!-- Sign Up End -->
+
+            </div>
+        </div>
+    </div>
+    <!-- BS JS -->
+
+    <!-- Add Review Modal -->
+
+    <!-- Modal -->
+    <div class="modal hide fade" id="addReviewModal" tabindex="-1" role="dialog" aria-labelledby="addReviewModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addReviewModalLabel">Add Review</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <textarea class="form-control" id="reviewText" rows="3"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="addNewReview()">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./logic.js"></script>
+</body>
+
+</html>
